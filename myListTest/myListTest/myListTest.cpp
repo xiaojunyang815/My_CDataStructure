@@ -1,4 +1,4 @@
-// myListTest.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌÐòµÄÈë¿Úµã¡£
+// myListTest.cpp : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµã¡£
 //
 
 #include "stdafx.h"
@@ -15,12 +15,11 @@ typedef struct _mydata
 #define ELEMENTTYPE MY_DATA_t
 #define pELEMENTTYPE MY_DATA_t *
 
-
-#define LIST_IS_EMPTY   1
-#define LIST_NOT_EMPTY  0
+#define LIST_IS_EMPTY 1
+#define LIST_NOT_EMPTY 0
 
 #define ELE_DEL_SUCCESS 1
-#define ELE_FOUND       2
+#define ELE_FOUND 2
 #define ELE_NOT_FOUND 255
 
 /////////////////////////////////////////////////
@@ -33,17 +32,15 @@ typedef struct _mylistNode
 /////////////////////////////////////////////////
 pMYLISTNODE_T pMyListHead;
 
-#define	DEMO_ELEMENT_SIZE	20
-uint8_t gDemoArray[DEMO_ELEMENT_SIZE] = 
-{
-	56,24,10,38,25,48,99,120,5,76,
-	57,29,11,37,23,50,97,118,7,75
-};
+#define DEMO_ELEMENT_SIZE 20
+uint8_t gDemoArray[DEMO_ELEMENT_SIZE] =
+    {
+        56, 24, 10, 38, 25, 48, 99, 120, 5, 76,
+        57, 29, 11, 37, 23, 50, 97, 118, 7, 75};
 
-uint8_t gDemoAddArray[5] = 
-{
-	31,41,51,61,71
-};
+uint8_t gDemoAddArray[5] =
+    {
+        31, 41, 51, 61, 71};
 
 /////////////////////////////////////////////////
 void fnInitMyList(void)
@@ -51,28 +48,28 @@ void fnInitMyList(void)
     pMyListHead = (pMYLISTNODE_T)0;
 }
 
-//Insert at head
-MYLISTNODE_T* fnInsertNEleToListHead(uint8_t *pEleData, uint8_t nEleCounter)
+// Insert at head
+MYLISTNODE_T *fnInsertNEleToListHead(uint8_t *pEleData, uint8_t nEleCounter)
 {
     MYLISTNODE_T *pNode;
 
-    if(nEleCounter == 0)
+    if (nEleCounter == 0)
     {
         return 0;
     }
 
-    while(nEleCounter--)
+    while (nEleCounter--)
     {
-        pNode = (MYLISTNODE_T*)malloc(sizeof(MYLISTNODE_T));
+        pNode = (MYLISTNODE_T *)malloc(sizeof(MYLISTNODE_T));
 
-        if(pNode != (MYLISTNODE_T*)0)
+        if (pNode != (MYLISTNODE_T *)0)
         {
             /*Init Node*/
             pNode->pNext = (MYLISTNODE_T *)0;
             pNode->pPrev = (MYLISTNODE_T *)0;
             pNode->pNodeData.xData = *pEleData++;
 
-            if(pMyListHead != (MYLISTNODE_T *)0)
+            if (pMyListHead != (MYLISTNODE_T *)0)
             {
                 pNode->pNext = pMyListHead;
                 pMyListHead->pPrev = pNode;
@@ -84,15 +81,14 @@ MYLISTNODE_T* fnInsertNEleToListHead(uint8_t *pEleData, uint8_t nEleCounter)
         {
             return 0;
         }
-        
-    }//while(nEleCounter--)
+
+    } // while(nEleCounter--)
 
     return pMyListHead;
 }
 
-
-//Insert at Tail
-MYLISTNODE_T* fnInsertNEleToListTail(uint8_t *pEleData, uint8_t nEleCounter)
+// Insert at Tail
+MYLISTNODE_T *fnInsertNEleToListTail(uint8_t *pEleData, uint8_t nEleCounter)
 {
     MYLISTNODE_T *pNode;
     if (nEleCounter == 0)
@@ -121,26 +117,26 @@ MYLISTNODE_T* fnInsertNEleToListTail(uint8_t *pEleData, uint8_t nEleCounter)
                 pNode->pPrev = pMyListHead;
                 pMyListHead = pNode;
             }
-        } //if(pNode != (MYLISTNODE_T*)0)
+        } // if(pNode != (MYLISTNODE_T*)0)
         else
         {
             return 0;
         }
-    } //while(nListLength--)
-	
-	//return the head of List
+    } // while(nListLength--)
+
+    // return the head of List
     while (pMyListHead->pPrev != (MYLISTNODE_T *)0)
     {
         pMyListHead = pMyListHead->pPrev;
     }
-    
-	return pMyListHead;
+
+    return pMyListHead;
 }
 
-//Delete specified element
+// Delete specified element
 uint8_t fnDeleteSpecifiedEle(const uint8_t mEleData)
 {
-    MYLISTNODE_T *pNode = (MYLISTNODE_T*)0;
+    MYLISTNODE_T *pNode = (MYLISTNODE_T *)0;
     uint8_t mReturnResult;
 
     mReturnResult = ELE_NOT_FOUND;
@@ -151,19 +147,19 @@ uint8_t fnDeleteSpecifiedEle(const uint8_t mEleData)
         {
             pNode = pMyListHead;
 
-            if(pNode->pPrev == (MYLISTNODE_T*)0)    /* at head */
+            if (pNode->pPrev == (MYLISTNODE_T *)0) /* at head */
             {
                 pMyListHead = pMyListHead->pNext;
-                pMyListHead->pPrev = (MYLISTNODE_T*)0;
+                pMyListHead->pPrev = (MYLISTNODE_T *)0;
             }
-            else                                    /* at center */
+            else /* at center */
             {
                 pMyListHead = pMyListHead->pNext;
                 pMyListHead->pPrev = pNode->pPrev;
                 pNode->pPrev->pNext = pMyListHead;
             }
-            free(pNode); //free the Node
-            pNode = (MYLISTNODE_T*)0;   //·ÀÖ¹²úÉúÒ°Ö¸Õë
+            free(pNode);               // free the Node
+            pNode = (MYLISTNODE_T *)0; //ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ò°Ö¸ï¿½ï¿½
             mReturnResult = ELE_DEL_SUCCESS;
             break;
         }
@@ -176,23 +172,23 @@ uint8_t fnDeleteSpecifiedEle(const uint8_t mEleData)
     if (pMyListHead->pNodeData.xData == mEleData)
     {
         pNode = pMyListHead;
-		if(pMyListHead->pPrev != (MYLISTNODE_T*)0)
+        if (pMyListHead->pPrev != (MYLISTNODE_T *)0)
         {
             pMyListHead = pMyListHead->pPrev;
-            pMyListHead->pNext = (MYLISTNODE_T*)0;
+            pMyListHead->pNext = (MYLISTNODE_T *)0;
         }
-        else    //pMyListHead->pPrve==NULL && pMyListHead->pNext==NULL
+        else // pMyListHead->pPrve==NULL && pMyListHead->pNext==NULL
         {
-            pMyListHead = (MYLISTNODE_T*)0;
+            pMyListHead = (MYLISTNODE_T *)0;
         }
         free(pNode);
-        pNode = (MYLISTNODE_T*)0;   //·ÀÖ¹²úÉúÒ°Ö¸Õë
+        pNode = (MYLISTNODE_T *)0; //ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ò°Ö¸ï¿½ï¿½
         mReturnResult = ELE_DEL_SUCCESS;
     }
-    
-    if(pMyListHead != (MYLISTNODE_T*)0)
+
+    if (pMyListHead != (MYLISTNODE_T *)0)
     {
-        while(pMyListHead->pPrev != (MYLISTNODE_T*)0)
+        while (pMyListHead->pPrev != (MYLISTNODE_T *)0)
         {
             pMyListHead = pMyListHead->pPrev;
         }
@@ -200,7 +196,7 @@ uint8_t fnDeleteSpecifiedEle(const uint8_t mEleData)
     return mReturnResult;
 }
 
-//Insert and Sort
+// Insert and Sort
 MYLISTNODE_T *fnInsertAndSortNEleIntoList(uint8_t *pEleData, uint8_t nListLength)
 {
     MYLISTNODE_T *pNode;
@@ -258,17 +254,17 @@ MYLISTNODE_T *fnInsertAndSortNEleIntoList(uint8_t *pEleData, uint8_t nListLength
                             {
                                 pMyListHead = pTempNode;
                             }
-                        } //while(pMyListHead->pNext != (MYLISTNODE_T*)0)
+                        } // while(pMyListHead->pNext != (MYLISTNODE_T*)0)
                         /* run to here, break OR means pNode should be on the tail */
-                        if(pMyListHead->pNext == (MYLISTNODE_T *)0)
-						{
-							pMyListHead->pNext = pNode;
-							pNode->pPrev = pMyListHead;
-							pMyListHead = pNode;
-						}
+                        if (pMyListHead->pNext == (MYLISTNODE_T *)0)
+                        {
+                            pMyListHead->pNext = pNode;
+                            pNode->pPrev = pMyListHead;
+                            pMyListHead = pNode;
+                        }
                     }
-                }    //if(pNode->pNodeData->xData >= pMyListHead->pNodeData->xData)
-                else //left direction
+                }    // if(pNode->pNodeData->xData >= pMyListHead->pNodeData->xData)
+                else // left direction
                 {
                     // left node was NULL, just insert it
                     if (pMyListHead->pPrev == (MYLISTNODE_T *)0)
@@ -300,24 +296,24 @@ MYLISTNODE_T *fnInsertAndSortNEleIntoList(uint8_t *pEleData, uint8_t nListLength
                             {
                                 pMyListHead = pTempNode;
                             }
-							if(pMyListHead->pPrev == (MYLISTNODE_T *)0)
+                            if (pMyListHead->pPrev == (MYLISTNODE_T *)0)
                             {
-								pMyListHead->pPrev = pNode;
-								pNode->pNext = pMyListHead;
-								pMyListHead = pNode;
-							}
+                                pMyListHead->pPrev = pNode;
+                                pNode->pNext = pMyListHead;
+                                pMyListHead = pNode;
+                            }
                         }
                     }
-                } //else if(pNode->pNodeData->xData >= pMyListHead->pNodeData->xData)
-            }     //else if(pMyListHead == (MYLISTNODE_T*)0)
-        }         //if(pNode != (MYLISTNODE_T*)0)
+                } // else if(pNode->pNodeData->xData >= pMyListHead->pNodeData->xData)
+            }     // else if(pMyListHead == (MYLISTNODE_T*)0)
+        }         // if(pNode != (MYLISTNODE_T*)0)
         else
         {
             return 0;
         }
-    } //while(nListLength--)
+    } // while(nListLength--)
 
-    //return the head of List
+    // return the head of List
     while (pMyListHead->pPrev != (MYLISTNODE_T *)0)
     {
         pMyListHead = pMyListHead->pPrev;
@@ -330,7 +326,7 @@ uint8_t fnSearchSpecifyElement(MYLISTNODE_T *pListHead, uint8_t Ele, uint8_t *pE
 {
     MYLISTNODE_T *pHead;
 
-    if(pListHead == (MYLISTNODE_T*)0)
+    if (pListHead == (MYLISTNODE_T *)0)
     {
         return LIST_IS_EMPTY;
     }
@@ -338,9 +334,9 @@ uint8_t fnSearchSpecifyElement(MYLISTNODE_T *pListHead, uint8_t Ele, uint8_t *pE
     pHead = pListHead;
     *pEleIdx = 0;
 
-    while(pHead != (MYLISTNODE_T*)0)
+    while (pHead != (MYLISTNODE_T *)0)
     {
-        if(Ele == pHead->pNodeData.xData)
+        if (Ele == pHead->pNodeData.xData)
         {
             return ELE_FOUND;
         }
@@ -356,27 +352,27 @@ uint8_t fnSearchSpecifyElement(MYLISTNODE_T *pListHead, uint8_t Ele, uint8_t *pE
 
 void fnOutputListElements(MYLISTNODE_T *pListToDisp)
 {
-	uint8_t mEleCounter=0;
-	MYLISTNODE_T *pDispList;
+    uint8_t mEleCounter = 0;
+    MYLISTNODE_T *pDispList;
 
-	pDispList = pListToDisp;
+    pDispList = pListToDisp;
 
-	while(pDispList != (MYLISTNODE_T*)0)
-	{
-		mEleCounter += 1;
-		printf("	%d", pDispList->pNodeData.xData);
-		pDispList = pDispList->pNext;
-	}
+    while (pDispList != (MYLISTNODE_T *)0)
+    {
+        mEleCounter += 1;
+        printf("	%d", pDispList->pNodeData.xData);
+        pDispList = pDispList->pNext;
+    }
 
-	printf("\r\n Total %d Elements were displayed. \r\n", mEleCounter);
+    printf("\r\n Total %d Elements were displayed. \r\n", mEleCounter);
 }
 
-uint8_t fnGetCounterOfListEle(MYLISTNODE_T* pListHead)
+uint8_t fnGetCounterOfListEle(MYLISTNODE_T *pListHead)
 {
     uint8_t mCounter = 0;
-    MYLISTNODE_T* pHead = pListHead;
+    MYLISTNODE_T *pHead = pListHead;
 
-    while(pHead != (MYLISTNODE_T*)0)
+    while (pHead != (MYLISTNODE_T *)0)
     {
         pHead = pHead->pNext;
         mCounter += 1;
@@ -385,38 +381,36 @@ uint8_t fnGetCounterOfListEle(MYLISTNODE_T* pListHead)
     return mCounter;
 }
 
-
-uint8_t fnCheckListIsEmpty(MYLISTNODE_T* pListHead)
+uint8_t fnCheckListIsEmpty(MYLISTNODE_T *pListHead)
 {
-    if(pListHead == (MYLISTNODE_T*)0)
+    if (pListHead == (MYLISTNODE_T *)0)
         return 1;
-    
+
     return 0;
 }
 
-
-int _tmain(int argc, _TCHAR* argv[])
+int _tmain(int argc, _TCHAR *argv[])
 {
-	int mInputData;
+    int mInputData;
     uint8_t mEleIndex;
 
-	printf("hello, Welcome to MY LIST world!\r\n");
-	
-	fnInitMyList();
+    printf("hello, Welcome to MY LIST world!\r\n");
+
+    fnInitMyList();
     printf("Counter: %d\r\n", fnGetCounterOfListEle(pMyListHead));
 
     printf("\r\nNow, we insert and sort the List.\r\n");
-	fnInsertAndSortNEleIntoList(gDemoArray, DEMO_ELEMENT_SIZE);
-	fnOutputListElements(pMyListHead);
+    fnInsertAndSortNEleIntoList(gDemoArray, DEMO_ELEMENT_SIZE);
+    fnOutputListElements(pMyListHead);
     printf("Counter: %d\r\n", fnGetCounterOfListEle(pMyListHead));
 
-	//fnInsertNEleToListTail(gDemoArray, DEMO_ELEMENT_SIZE);
+    // fnInsertNEleToListTail(gDemoArray, DEMO_ELEMENT_SIZE);
 
     fnInsertNEleToListHead(gDemoAddArray, 5);
     fnOutputListElements(pMyListHead);
     printf("Counter: %d\r\n", fnGetCounterOfListEle(pMyListHead));
 
-    if(ELE_FOUND == fnSearchSpecifyElement(pMyListHead, 200, &mEleIndex))
+    if (ELE_FOUND == fnSearchSpecifyElement(pMyListHead, 200, &mEleIndex))
     {
         printf("\r\nEle Found, index is %d\r\n", mEleIndex);
     }
@@ -424,22 +418,21 @@ int _tmain(int argc, _TCHAR* argv[])
     {
         printf("\r\nEle not found.\r\n");
     }
-    
 
-	/*
+    /*
     printf("\r\nAdd and sort other some elements.\r\n");
     fnInsertAndSortNEleIntoList(gDemoAddArray, 5);
-	fnOutputListElements(pMyListHead);
+    fnOutputListElements(pMyListHead);
     printf("Counter: %d\r\n", fnGetCounterOfListEle(pMyListHead));
     */
     printf("\r\nNow, let us delete specified element.\r\n");
-    while(LIST_NOT_EMPTY == fnCheckListIsEmpty(pMyListHead))
+    while (LIST_NOT_EMPTY == fnCheckListIsEmpty(pMyListHead))
     {
         printf("Please input the data you want to delete: ");
-    
+
         scanf_s("%d", &mInputData);
-        
-        if(ELE_DEL_SUCCESS == fnDeleteSpecifiedEle((uint8_t)mInputData))
+
+        if (ELE_DEL_SUCCESS == fnDeleteSpecifiedEle((uint8_t)mInputData))
         {
             printf("\r\nOK, deleted successfully.\r\n");
             fnOutputListElements(pMyListHead);
@@ -451,9 +444,8 @@ int _tmain(int argc, _TCHAR* argv[])
             fnOutputListElements(pMyListHead);
         }
     }
-    
-	system("pause");
 
-	return 0;
+    system("pause");
+
+    return 0;
 }
-

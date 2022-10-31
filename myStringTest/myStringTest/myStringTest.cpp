@@ -1,4 +1,4 @@
-// myStringTest.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌÐòµÄÈë¿Úµã¡£
+// myStringTest.cpp : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµã¡£
 //
 
 #include "stdafx.h"
@@ -124,8 +124,8 @@ int fnStrlen(const char *pStrSrc)
 
 int _tmain(int argc, _TCHAR *argv[])
 {
-	char *mv_src = "the src test memmove"; //length=20
-	//char mv_dest[40];
+	char *mv_src = "the src test memmove"; // length=20
+	// char mv_dest[40];
 	char *pMvDest = (char *)malloc(42);
 
 	printf("Welcome to my String World.\r\n");
@@ -152,7 +152,7 @@ int _tmain(int argc, _TCHAR *argv[])
 	printf("pMvDest length is: %d\r\n", fnStrlen(pMvDest));
 
 	free(pMvDest);
-	pMvDest = NULL; //·ÀÖ¹²úÉúÒ°Ö¸Õë
+	pMvDest = NULL; //ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ò°Ö¸ï¿½ï¿½
 
 	system("pause");
 	return 0;

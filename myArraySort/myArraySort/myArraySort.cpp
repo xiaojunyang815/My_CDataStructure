@@ -8,14 +8,14 @@
 
 #define SORT_ARRAY_SIZE 21
 int gOriginalArray[] =
-  {
-    128, 65, 97, 200, 78, 54, 156, 198, 15, 27,
-    275, 34, 8, 234, 13, 26, 278, 39, 376, 1,
-    147};
+    {
+        128, 65, 97, 200, 78, 54, 156, 198, 15, 27,
+        275, 34, 8, 234, 13, 26, 278, 39, 376, 1,
+        147};
 
 int gTestArray[5] =
-  {
-    5, 4, 3, 2, 1};
+    {
+        5, 4, 3, 2, 1};
 
 void fnPrintArray(int *pDispArray, int mCounter)
 {
@@ -180,7 +180,7 @@ void insertSort(int *pSourceArray, int mArrayLength)
     }
   }
 }
-//Shell Sort
+// Shell Sort
 void shellInsertSort(int *pSourceArray, int dk)
 {
   int i, j;
@@ -298,15 +298,14 @@ void heapSort(int *pSourceArray, int n)
 
 //////////////////////////////////////////////////////
 //πÈ≤¢≈≈–Ú
-void mergeArray(int* pSourceArray, int left, int mid, int right)
+void mergeArray(int *pSourceArray, int left, int mid, int right)
 {
   int len = right - left + 1;
-  int* pTempArray = new int[len];
+  int *pTempArray = new int[len];
 
-  int k=0;
-  int i=left;
-  int j=mid+1;
-
+  int k = 0;
+  int i = left;
+  int j = mid + 1;
 }
 
 int _tmain(int argc, _TCHAR *argv[])
@@ -314,15 +313,15 @@ int _tmain(int argc, _TCHAR *argv[])
   printf("Welcome to my ArraySort world.\r\n");
 
   fnPrintArray(gOriginalArray, SORT_ARRAY_SIZE);
-  //fnBubbleSort1(gOriginalArray);
-  //quickSort(gOriginalArray, 0, SORT_ARRAY_SIZE-1);
+  // fnBubbleSort1(gOriginalArray);
+  // quickSort(gOriginalArray, 0, SORT_ARRAY_SIZE-1);
 
-  //insertSort(gTestArray, 5);
-  //insertSort(gOriginalArray, SORT_ARRAY_SIZE);
+  // insertSort(gTestArray, 5);
+  // insertSort(gOriginalArray, SORT_ARRAY_SIZE);
 
-  //shellSort(gOriginalArray, SORT_ARRAY_SIZE);
+  // shellSort(gOriginalArray, SORT_ARRAY_SIZE);
 
-  //selectSort(gOriginalArray, SORT_ARRAY_SIZE);
+  // selectSort(gOriginalArray, SORT_ARRAY_SIZE);
 
   heapSort(gOriginalArray, SORT_ARRAY_SIZE);
   fnPrintArray(gOriginalArray, SORT_ARRAY_SIZE);
