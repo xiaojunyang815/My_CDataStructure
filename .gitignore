@@ -16,3 +16,11 @@ myListTest/myListTest/Debug/
 
 myListTest/myListTest/myListTest.vcxproj*
 myListTest/myListTest.*
+
+myStackTest/.vscode/
+myStackTest/Debug/
+myStackTest/ipch/
+myStackTest/myStackTest/Debug/
+
+myStackTest/myStackTest/myStackTest.vcxproj*
+myStackTest/myStackTest.*
