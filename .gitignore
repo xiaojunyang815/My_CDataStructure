@@ -9,6 +9,7 @@ myArraySort/myArraySort/myArraySort.vcxproj*
 
 myArraySort/myArraySort.*
 
+# myListTest
 myListTest/.vscode/
 myListTest/Debug/
 myListTest/ipch/
@@ -17,6 +18,7 @@ myListTest/myListTest/Debug/
 myListTest/myListTest/myListTest.vcxproj*
 myListTest/myListTest.*
 
+# myStackTest
 myStackTest/.vscode/
 myStackTest/Debug/
 myStackTest/ipch/
@@ -24,3 +26,12 @@ myStackTest/myStackTest/Debug/
 
 myStackTest/myStackTest/myStackTest.vcxproj*
 myStackTest/myStackTest.*
+
+# myStringTest
+myStringTest/.vscode/
+myStringTest/Debug/
+myStringTest/ipch/
+myStringTest/myStringTest/Debug/
+
+myStringTest/myStringTest/myStringTest.vcxproj*
+myStringTest/myStringTest.*
