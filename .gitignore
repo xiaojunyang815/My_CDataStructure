@@ -6,6 +6,13 @@ myArraySort/ipch/
 
 myArraySort/myArraySort/Debug/
 myArraySort/myArraySort/myArraySort.vcxproj*
-myArraySort/myArraySort/myArraySort.vcxproj*
 
 myArraySort/myArraySort.*
+
+myListTest/.vscode/
+myListTest/Debug/
+myListTest/ipch/
+myListTest/myListTest/Debug/
+
+myListTest/myListTest/myListTest.vcxproj*
+myListTest/myListTest.*
